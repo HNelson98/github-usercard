@@ -2,13 +2,14 @@
            (replacing the palceholder with your Github name):
            https://api.github.com/users/<your name>
 */
-axios.get("https://api.github.com/users/Hnelson98")
-.then(res => {
-  console.log(res)
-})
-.catch(err => {
-  console.log(err)
-})
+// axios.get("https://api.github.com/users/Hnelson98")
+// .then(res => {
+//   newCard(res)
+//   console.log(res)
+// })
+// .catch(err => {
+//   console.log(err)
+// })
 
 /* Step 2: Inspect and study the data coming back, this is YOUR 
    github info! You will need to understand the structure of this 
@@ -31,7 +32,7 @@ axios.get("https://api.github.com/users/Hnelson98")
           user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+const followersArray = ['tetondan', 'dustinmyers', 'justsml', 'luishrd', 'bigknell'];
 
 /* Step 3: Create a function that accepts a single object as its only argument,
           Using DOM methods and properties, create a component that will return the following DOM element:
@@ -82,7 +83,35 @@ const newCard = function(user){
   following =
     document.createElement('p'),
   bio =
-    document.createElement('p');
-
+    document.createElement('p'),
+  cardContainer =
+    document.querySelector('.cards');
   
+  cardContainer.append(card);
+  card.append(img);
+  card.append(cardInfo);
+  cardInfo.append(name);
+  cardInfo.append(username);
+  cardInfo.append(location);
+  cardInfo.append(profile);
+  profile.append(address);
+  cardInfo.append(followers);
+  cardInfo.append(following);
+  cardInfo.append(bio);
+
+card.classList.add('card')
+img.src = user.data.avatar_url;
+cardInfo.classList.add('car-info')
+name.classList.add('name')
+name.textContent = user.data.name
+username.classList.add('username')
+username.textContent= user.data.login
+location.textContent= `Location: ${user.data.login}`
+address.href= user.data.html_url
+address.textContent= user.data.html_url
+followers.textContent= `Followers: ${user.data.followers}`
+following.textContent= `Following: ${user.data.following}`
+bio.textContent= `Bio: ${user.data.bio}`
+
+  return card
 }
