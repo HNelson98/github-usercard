@@ -115,3 +115,15 @@ bio.textContent= `Bio: ${user.data.bio}`
 
   return card
 }
+
+// followersArray.forEach(u =>{
+//   axios.get(`https://api.github.com/users/${u}`)
+//   .then(res => {
+//     newCard(res)
+//     console.log(res)
+//   })
+//   .catch(err => {
+//     console.log(err)
+//   })
+  
+// })
